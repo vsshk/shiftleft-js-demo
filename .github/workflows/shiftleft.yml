@@ -4,6 +4,7 @@
 name: qwiet.ai
 
 on:
+  push:
   pull_request:
   workflow_dispatch:
 
@@ -25,7 +26,7 @@ jobs:
     - name: preZero Static Analysis
       run: |
         ${GITHUB_WORKSPACE}/sl --version
-        ${GITHUB_WORKSPACE}/sl analyze --strict --wait \
+        ${GITHUB_WORKSPACE}/sl analyze --verbose --strict --wait \
           --app shiftleft-js-demo \
           --tag branch=${{ github.head_ref }} \
           --js --container 18fgsa/s3-resource .
