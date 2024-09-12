@@ -8,15 +8,14 @@ module.exports = app => {
   });
   app.get(`/login`, (req, res) => res.render('Login'));
 
-  app.get(`/user-input`, (req, res) => {
+ // app.get(`/user-input`, (req, res) => {
     /*
       User input vulnerability,
       if the user passes vulnerable javascipt code, its executed in user's browser
       ex: alert('hi')
     */
     let result = '';
-    try {
-      result = require('util').inspect(eval(req.query.userInput));
+    try {      result = require('util').inspect(eval(req.query.userInput));
     } catch (ex) {
       console.error(ex);
     }
